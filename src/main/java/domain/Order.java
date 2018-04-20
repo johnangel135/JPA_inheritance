@@ -1,6 +1,7 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +12,12 @@ import java.util.List;
 @Table(name = "ORDERfix")
 public class Order {
     @Id @GeneratedValue
-    private int orderid;
+    private int id;
     private Date date;
 
+
     @OneToMany
-    private List<OrderLine> orderLines;
+    private List<OrderLine> orderLines = new ArrayList<OrderLine>();
 
     public Order(Date date, List<OrderLine> orderLines) {
         this.date = date;
@@ -26,6 +28,15 @@ public class Order {
 
     }
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Date getDate() {
         return date;
     }
@@ -33,6 +44,7 @@ public class Order {
     public void setDate(Date date) {
         this.date = date;
     }
+
 
     public List<OrderLine> getOrderLines() {
         return orderLines;

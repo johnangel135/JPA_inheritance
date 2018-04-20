@@ -1,5 +1,7 @@
 package domain;
 
+import com.sun.istack.internal.Nullable;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -11,16 +13,26 @@ import java.util.List;
 public class OrderLine {
     @Id @GeneratedValue
     private int id;
+    private int orderId;
     private int quantity;
 
-    @Embedded
+    @OneToOne
     private Product products;
 
     public OrderLine(){
 
     }
 
-    public OrderLine( Product products, int quantity) {
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public OrderLine(Product products, int quantity) {
         this.quantity = quantity;
         this.products = products;
     }
