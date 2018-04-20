@@ -1,6 +1,7 @@
 package control;
 
 
+import domain.CD;
 import domain.Order;
 import domain.OrderLine;
 import domain.Product;
@@ -41,9 +42,20 @@ public class ProductApplication {
 
 			Product product = new Product("Product A","This is product A");
             session.save(product);
+            CD cd = new CD();
+            cd.setName("This is CD");
+            cd.setDescription("description CD");
+            cd.setArtist("CT");
+            session.save(cd);
 			OrderLine line = new OrderLine(product,4);
+			line.setOrder(order);
             session.save(line);
+
+            OrderLine line1 = new OrderLine(cd,6);
+            line1.setOrder(order);
+            session.save(line1);
 			orderLines.add(line);
+            orderLines.add(line1);
 
 			order.setDate(Calendar.getInstance().getTime());
 			order.setOrderLines(orderLines);

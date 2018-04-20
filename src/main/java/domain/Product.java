@@ -7,6 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "PRODUCT")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Product {
     @Id @GeneratedValue
     private  int id;

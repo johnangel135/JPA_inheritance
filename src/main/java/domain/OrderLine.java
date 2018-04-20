@@ -13,10 +13,14 @@ import java.util.List;
 public class OrderLine {
     @Id @GeneratedValue
     private int id;
-    private int orderId;
     private int quantity;
 
     @OneToOne
+    @JoinColumn(name = "Order_id")
+    private Order order;
+
+    @OneToOne
+    @JoinColumn
     private Product products;
 
     public OrderLine(){
@@ -24,13 +28,14 @@ public class OrderLine {
     }
 
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
+
 
     public OrderLine(Product products, int quantity) {
         this.quantity = quantity;

@@ -11,5 +11,6 @@
 		<mapping class = "domain.Order"></mapping>
 		<mapping class="domain.OrderLine"></mapping>
 		<mapping class="domain.Product"></mapping>
+        <mapping class="domain.CD"></mapping>
 	</session-factory>
 </hibernate-configuration>

@@ -17,6 +17,7 @@ public class Order {
 
 
     @OneToMany
+    @JoinColumn
     private List<OrderLine> orderLines = new ArrayList<OrderLine>();
 
     public Order(Date date, List<OrderLine> orderLines) {
